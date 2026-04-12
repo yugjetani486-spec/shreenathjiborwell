@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreenathji Borwell</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* COLOR THEME */
+:root {
+    --dark: #0b132b;
+    --gold: #38bdf8;
+    --light: #f8fafc;
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--light);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    background: var(--dark);
+}
+
+.navbar-brand {
+    color: var(--gold) !important;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* LOGO */
+.logo {
+    height: 40px;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 90vh;
+    background: linear-gradient(rgba(11,19,43,0.9), rgba(11,19,43,0.9));
+    color: white;
+    overflow: hidden;
+}
+
+/* WATER DROPS BACKGROUND */
+.drops span {
+    position: absolute;
+    bottom: -100px;
+    width: 15px;
+    height: 15px;
+    background: rgba(56,189,248,0.6);
+    border-radius: 50%;
+    animation: rise 10s infinite;
+}
+
+.drops span:nth-child(1){ left:10%; animation-duration:8s;}
+.drops span:nth-child(2){ left:20%; animation-duration:12s;}
+.drops span:nth-child(3){ left:30%; animation-duration:10s;}
+.drops span:nth-child(4){ left:40%; animation-duration:14s;}
+.drops span:nth-child(5){ left:50%; animation-duration:9s;}
+.drops span:nth-child(6){ left:60%; animation-duration:11s;}
+.drops span:nth-child(7){ left:70%; animation-duration:13s;}
+.drops span:nth-child(8){ left:80%; animation-duration:7s;}
+.drops span:nth-child(9){ left:90%; animation-duration:10s;}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity:0.5; }
+    100% { transform: translateY(-900px) scale(1.5); opacity:0; }
+}
+
+
+/* ACCORDION STYLE */
+.accordion-button {
+    font-weight: bold;
+    background: white;
+}
+
+.accordion-button:not(.collapsed) {
+    background: #38bdf8;
+    color: white;
+}
+
+/* SLIDE ANIMATION */
+.accordion-collapse {
+    transition: all 0.5s ease;
+}
+
+/* ICON STYLE */
+.icon {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+/* IMAGE STYLE */
+.service-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* RIPPLE EFFECT */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple span {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    background: rgba(56,189,248,0.6);
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+/* HERO CONTENT */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* HERO LOGO */
+.hero-logo {
+    width: 180px;
+    animation: float 4s ease-in-out infinite;
+}
+.gallery-scroll {
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 20px;
+    animation: scrollGallery 20s linear infinite;
+}
+
+.gallery-track img {
+    height: 250px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.gallery-track img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scrollGallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-20px);}
+    100% {transform: translateY(0);}
+}
+
+/* BUTTON */
+.btn-main {
+    background: var(--gold);
+    color: black;
+    border-radius: 30px;
+    padding: 10px 25px;
+}
+
+/* SERVICES */
+.service-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.service-box:hover {
+    transform: translateY(-10px);
+    border-left: 5px solid var(--gold);
+}
+
+/* MODAL BACKGROUND */
+.service-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* MODAL CONTENT */
+.service-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 12px;
+    animation: slideUp 0.4s ease;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* IMAGE IN MODAL */
+.modal-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+/* GALLERY */
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* CONTACT */
+.contact {
+    background: var(--dark);
+    color: white;
+    padding: 60px 0;
+}
+
+/* MAP */
+.map iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+}
+
+/* FOOTER */
+.footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+    <a class="navbar-brand" href="#">
+        <img src="logo.png" class="logo">
+        Shreenathji Borwell
+    </a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero d-flex align-items-center justify-content-center">
+
+    <!-- WATER DROPS -->
+    <div class="drops">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="container hero-content">
+        <img src="logo.png" class="hero-logo mb-3">
+
+        <h1>Reliable <span style="color:#38bdf8;">Borewell Services</span></h1>
+        <p>Professional drilling solutions for agriculture, homes & industries</p>
+
+        <a href="#contact" class="btn btn-main mt-3">Get in Touch</a>
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="container text-center my-5">
+    <h2 class="mb-3">About Company</h2>
+
+    <p style="max-width:700px; margin:auto; font-size:17px; line-height:1.7;">
+        <strong>Shreenathji Borewell</strong> is a trusted name in borewell drilling 
+        and water solutions across Gujarat. We use modern machines and advanced 
+        technology to provide fast, safe, and reliable services.
+    </p>
+
+    <p style="max-width:700px; margin:auto; font-size:17px; line-height:1.7;">
+        Our experienced team works with full dedication to ensure proper water 
+        solutions for homes, farms, and industries. Customer satisfaction and 
+        quality service are always our top priorities.
+    </p>
+
+    <p style="max-width:700px; margin:auto; font-size:17px; line-height:1.7;">
+        We believe in honest work, strong commitment, and long-term relationships 
+        with our customers.
+    </p>
+</section>
+<!-- SERVICES -->
+<section class="container my-5 text-center">
+    <h2 class="mb-4">Our Services</h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="service-box ripple" onclick="openService('borewell', event)">
+                <h4>⚙️ Borewell Drilling</h4>
+                <p>Click to view details</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="service-box ripple" onclick="openService('water', event)">
+                <h4>🔧 Water Services</h4>
+                <p>Click to view services</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="service-box ripple" onclick="openService('maintenance', event)">
+                <h4>🛠️ Maintenance</h4>
+                <p>Click to view details</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL BOX -->
+<div id="serviceModal" class="service-modal">
+    <div class="service-content">
+        <span class="close-btn" onclick="closeService()">✖</span>
+        <div id="modalData"></div>
+    </div>
+</div>
+
+<section class="container my-5">
+    <h2 class="text-center mb-4">Our Work</h2>
+
+    <div class="gallery-scroll">
+        <div class="gallery-track">
+            <img src="pic.jpg">
+            <img src="pic 2.jpg">
+            <img src="pic 3.jpg">
+            <img src="pic 4.jpeg">
+
+            <!-- Duplicate for smooth infinite scroll -->
+            <img src="pic.jpg">
+            <img src="pic 2.jpg">
+            <img src="pic 3.jpg">
+            <img src="pic 4.jpeg">
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact text-center" id="contact">
+<div class="container">
+    <h2>Contact Us</h2>
+    <p>📍 Dhakwada , Bilimora , Gujarat - India</p>
+    <p>📞 +91 99094 42948</p>
+    <p>📧 shreenathjiborwell@gmail.com</p>
+
+    <a href="tel:9909442948" class="btn btn-main">Call Now</a>
+</div>
+</section>
+
+<!-- GOOGLE MAP -->
+<section class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3730.3966761704323!2d73.001493!3d20.775233999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDQ2JzMwLjgiTiA3M8KwMDAnMDUuNCJF!5e0!3m2!1sen!2sin!4v1775985743541!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 Shreenathji Borwell</p>
+</div>
+
+<script>
+function openService(type, event) {
+
+    // Ripple Effect
+    let ripple = document.createElement("span");
+    let rect = event.target.getBoundingClientRect();
+    ripple.style.left = (event.clientX - rect.left) + "px";
+    ripple.style.top = (event.clientY - rect.top) + "px";
+    event.target.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600);
+
+    let content = "";
+
+    if(type === "borewell") {
+        content = `
+        <h4>⚙️ Borewell Drilling</h4>
+
+        <p>
+        We provide advanced borewell drilling services using modern machinery
+        suitable for agricultural, residential, and industrial purposes.
+        Our expert team ensures accurate drilling with maximum water yield.
+        </p>
+
+        <h6>✔ Features:</h6>
+        <ul>
+            <li>Deep drilling up to required depth</li>
+            <li>Works in hard rock and soil</li>
+            <li>Fast and efficient process</li>
+            <li>High success rate for water availability</li>
+        </ul>
+
+        <h6>🔄 Process:</h6>
+        <ul>
+            <li>Site inspection and analysis</li>
+            <li>Machine setup and drilling</li>
+            <li>Casing pipe installation</li>
+            <li>Water testing and completion</li>
+        </ul>
+
+        <h6>⭐ Benefits:</h6>
+        <ul>
+            <li>Reliable water source</li>
+            <li>Long-lasting performance</li>
+            <li>Low maintenance cost</li>
+        </ul>
+        `;
+    }
+
+    else if(type === "water") {
+        content = `
+        <h4>🔧 Water Services</h4>
+
+        <p>
+        We offer complete water management solutions to ensure smooth
+        water supply and efficient usage for homes, farms, and industries.
+        </p>
+
+        <h6>✔ Services Included:</h6>
+        <ul>
+            <li>Borewell drilling & tube well setup</li>
+            <li>Submersible pump installation</li>
+            <li>Pipeline fitting and water flow setup</li>
+            <li>Water storage and distribution solutions</li>
+        </ul>
+
+        <h6>🔄 Working Process:</h6>
+        <ul>
+            <li>Understanding water requirements</li>
+            <li>Selecting suitable equipment</li>
+            <li>Installation and testing</li>
+            <li>Final inspection and handover</li>
+        </ul>
+
+        <h6>⭐ Advantages:</h6>
+        <ul>
+            <li>Efficient water usage</li>
+            <li>Energy-saving solutions</li>
+            <li>Long-term reliability</li>
+        </ul>
+        `;
+    }
+
+    else if(type === "maintenance") {
+        content = `
+        <h4>🛠️ Maintenance Services</h4>
+
+        <p>
+        Regular maintenance is essential for proper functioning of borewells.
+        We provide professional maintenance services to increase lifespan
+        and improve water flow efficiency.
+        </p>
+
+        <h6>✔ Maintenance Includes:</h6>
+        <ul>
+            <li>Borewell cleaning and flushing</li>
+            <li>Removal of sand, mud & blockage</li>
+            <li>Motor and pump repair</li>
+            <li>Pipe and cable inspection</li>
+            <li>Water level and flow testing</li>
+        </ul>
+
+        <h6>🔄 Maintenance Process:</h6>
+        <ul>
+            <li>Inspection of borewell condition</li>
+            <li>Cleaning using advanced tools</li>
+            <li>Repair or replacement if needed</li>
+            <li>Final performance testing</li>
+        </ul>
+
+        <h6>⭐ Benefits:</h6>
+        <ul>
+            <li>Improved water flow</li>
+            <li>Increased borewell life</li>
+            <li>Reduced repair cost</li>
+        </ul>
+        `;
+    }
+
+    document.getElementById("modalData").innerHTML = content;
+    document.getElementById("serviceModal").style.display = "flex";
+}
+
+function closeService() {
+    document.getElementById("serviceModal").style.display = "none";
+}
+
+// CLOSE ON OUTSIDE CLICK
+window.onclick = function(e) {
+    let modal = document.getElementById("serviceModal");
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

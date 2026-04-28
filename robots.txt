@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shreenathjiborwell.in/sitemap.xml
